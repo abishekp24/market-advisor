@@ -23,7 +23,7 @@ previous close, and a directional signal for each ticker.
 ## How to run it
 
 **1. Clone the repo**
-git clone https://github.com/yourusername/market-advisor.git
+git clone https://github.com/abishekp24/market-advisor.git
 cd market-advisor
 
 **2. Create and activate a virtual environment**
