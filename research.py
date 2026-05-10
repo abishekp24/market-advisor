@@ -7,7 +7,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import  yfinance as yf
 from groq import Groq
 import sys
-
+from database import save_price_snapshot, save_sentiment_score, create_tables
 
 warnings.filterwarnings("ignore")
 load_dotenv()
@@ -108,6 +108,9 @@ def run_research(ticker):
     
     print ("Fetching news and analyzing sentiment...")
     sentiment_data = get_news_and_sentiment(ticker)
+    create_tables()
+    save_price_snapshot(ticker, price_data)
+    save_sentiment_score(ticker, sentiment_data)
 
     print ("Generating AI Summary...")
     summary = get_ai_summary (ticker,price_data,sentiment_data)

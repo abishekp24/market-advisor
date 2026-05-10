@@ -2,6 +2,10 @@ import warnings
 warnings.filterwarnings("ignore")
 from datetime import datetime
 from utils import get_price_snapshots
+from database import save_price_snapshot, create_tables
+
+
+create_tables()
 
 watchlist = {
     'AAPL' : "Apple",
@@ -30,3 +34,4 @@ for ticker,name in watchlist.items():
     else:
         signal = get_signal(data['change_pct'])
         print(f"{signal}  {ticker:<10} ${data['price']:<10.2f} {data['change_pct']:+.2f}%  ({name})")
+        save_price_snapshot(ticker, data)
